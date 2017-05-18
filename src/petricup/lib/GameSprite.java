@@ -14,7 +14,8 @@ import java.awt.image.BufferedImage;
  *
  * @author tuyenhuynh
  */
-public abstract class GameSprite extends com.golden.gamedev.object.Sprite{
+public abstract class GameSprite{
+    com.golden.gamedev.object.Sprite m_sprite = new com.golden.gamedev.object.Sprite();
     /**
      * Color of sprite.
      * This color will be fill as a background of icon.
@@ -53,8 +54,8 @@ public abstract class GameSprite extends com.golden.gamedev.object.Sprite{
      * @param position position
      */
     public void setPosition(Point position) {
-        this.setX(position.getX() - 1 / 2);
-        this.setY(position.getY() - 1 / 2);
+        m_sprite.setX(position.getX() - 1 / 2);
+        m_sprite.setY(position.getY() - 1 / 2);
     }
     
     /**
@@ -63,8 +64,8 @@ public abstract class GameSprite extends com.golden.gamedev.object.Sprite{
      */
     public Point getPosition() {
         Point position = new Point();
-        position.x = (int) (getX());
-        position.y = (int) (getY());
+        position.x = (int) (m_sprite.getX());
+        position.y = (int) (m_sprite.getY());
         
         return position;
     }
@@ -74,6 +75,10 @@ public abstract class GameSprite extends com.golden.gamedev.object.Sprite{
      * @param speed speed
      */
     public abstract void setSpeed(double speed);
+    
+    public void setSpeed(double horizontalSpeed, double verticalSpeed){
+        m_sprite.setSpeed(horizontalSpeed, verticalSpeed);
+    }
 
     /**
      * Get speed of object.
@@ -114,15 +119,33 @@ public abstract class GameSprite extends com.golden.gamedev.object.Sprite{
     public int getDirection() {
         return angle;
     }
-    
-    @Override
+
     public void setHorizontalSpeed(double speed){
-        super.setHorizontalSpeed(speed);
+        m_sprite.setHorizontalSpeed(speed);
     }
-    
-    @Override 
+
     public void setVerticalSpeed(double speed) {
-        super.setVerticalSpeed(speed);
+        m_sprite.setVerticalSpeed(speed);
     }
     
+    public void setActive(boolean active){
+        m_sprite.setActive(active);
+    }
+    
+    public double getHorizontalSpeed(){
+        return m_sprite.getHorizontalSpeed();
+    }
+    
+    public double getVerticalSpeed(){
+        return m_sprite.getVerticalSpeed();
+    }
+    
+    public void setImage(BufferedImage bi){
+        m_sprite.setImage(bi);
+    }
+    
+    public boolean isActive(){
+        return m_sprite.isActive();
+    }
+
 }

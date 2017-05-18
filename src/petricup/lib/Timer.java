@@ -1,12 +1,12 @@
 package petricup.lib;
 
-public class Timer extends com.golden.gamedev.object.Timer {
+public class Timer{
+    com.golden.gamedev.object.Timer m_timer;
     public Timer(int delay) {
-        super(delay);
+        m_timer = new com.golden.gamedev.object.Timer(delay);
     }
     
-    @Override
     public boolean action(long time) {
-        return super.action(time);
+        return m_timer.action(time);
     }
 }

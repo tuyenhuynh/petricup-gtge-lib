@@ -11,13 +11,14 @@ import java.awt.Font;
  *
  * @author tuyenhuynh
  */
-public class SystemFont extends com.golden.gamedev.object.font.SystemFont {
+public class SystemFont{
+    com.golden.gamedev.object.font.SystemFont m_font;
     
     public SystemFont(String fontName, int attrs, int size, java.awt.Color clr) {
-        super(new Font(fontName, attrs, size), clr);
+        m_font = new com.golden.gamedev.object.font.SystemFont(new Font(fontName, attrs, size), clr);
     }
     
     public void drawString(Graphics2D g, String data, int x, int y) {
-        super.drawString(g.get(), data, x, y);
-    }
+        m_font.drawString(g.get(), data, x, y);
+    }   
 }

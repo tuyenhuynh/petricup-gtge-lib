@@ -6,20 +6,37 @@
 package petricup.lib;
 
 import com.golden.gamedev.object.Sprite;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 /**
  *
  * @author tuyenhuynh
  */
-public class SpriteGroup extends com.golden.gamedev.object.SpriteGroup{
+public class SpriteGroup{
+    com.golden.gamedev.object.SpriteGroup m_spriteGroup;
     
     public SpriteGroup(String string) {
-        super(string);
+        m_spriteGroup = new com.golden.gamedev.object.SpriteGroup(string);
     }
     
-    @Override
-    public void add(Sprite sprite) {
-        super.add(sprite);
+    public void add(GameSprite sprite){
+        m_spriteGroup.add(sprite.m_sprite);
+        m_map.put(sprite.m_sprite, sprite);
     }
     
+    public void remove(GameSprite sprite){
+        m_spriteGroup.remove(sprite.m_sprite);
+        m_map.remove(sprite.m_sprite);
+    }
+    
+    GameSprite get(com.golden.gamedev.object.Sprite sp){
+        return m_map.get(sp);
+    }
+    
+    
+    Map<Sprite, GameSprite> m_map = new HashMap<>();
 }
