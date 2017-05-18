@@ -16,9 +16,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * @author nghiand
  */
 public class Scene implements Screen{
+    /** 
+     * Объект игры
+     */
     final GameObject m_gameObject;
+
+    /** 
+     * Камера
+     */
     OrthographicCamera m_camera;
     
+    /** 
+     * Конструктор
+     * @param gameObject Объект игры
+     */
     public Scene(GameObject gameObject){
         m_gameObject = gameObject;
         m_camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -26,16 +37,19 @@ public class Scene implements Screen{
         m_camera.update();
         
         Game.m_current_camera = m_camera;
-        
-        
     }
 
+    /** 
+     * Позазывает игру
+     */
     @Override
     public void show() {
         m_gameObject.initResources();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Рендеринг игры
+     */
     @Override
     public void render(float f) {
         m_camera.update();
@@ -50,25 +64,39 @@ public class Scene implements Screen{
         m_gameObject.parent.m_game.m_ctx.end();
     }
 
+    /**
+     * Изменение размера игры
+     */
     @Override
     public void resize(int i, int i1) {
     }
 
+    /**
+     * Остановить игры
+     */
     @Override
     public void pause() {
     }
 
+    /**
+     * Продолжить игры
+     */
     @Override
     public void resume() {
     }
 
+    /**
+     * Скрыть игру
+     */
     @Override
     public void hide() {
     }
 
+    /**
+     *  Отпустить все ресурсы.
+     */
     @Override
     public void dispose() {
         TextureManager.disposeTextures();
     }
-
 }

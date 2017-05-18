@@ -10,21 +10,34 @@ package petricup.lib;
  * @author tuyenhuynh
  */
 public class Timer {
-    private long delay;			// action delay
+    /**
+     * Время задержки
+     */
+    private long delay;
+
+    /**
+     * Отметка времени таймера
+     */
     private long currentTick;
     
+    /**
+     * Создает Timer с заданным временем задержки в миллисекундах
+     * @param delay 
+     */
     public Timer(int delay) {
         this.delay = delay;
         this.currentTick = 0;
     }
-    
+
+    /**
+     * Возвращает true, если истекло время задержки таймера, поэтому действие должно быть выполнено.
+     * @param time
+     * @return
+     */
     public boolean action(long l) {
         currentTick += l;
         if (currentTick >= delay) {
-            // time elapsed!
-
-            // currentTick = 0;
-            // synch the current tick to make the next tick accurate
+            
             currentTick -= delay;
 
             return true;

@@ -17,7 +17,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class GameEngine {
     
+    /**
+     * Игра
+     */
     Game m_game;
+
+    /**
+     * id игры
+     */
     public int nextGameID;
     
     public GameEngine(){
@@ -25,6 +32,10 @@ public class GameEngine {
         m_game.m_gameEngine = this;
     }
 
+    /**
+     * Получает игры на основании id
+     * @param GameID - id игры
+     */
     public GameObject getGame(int GameID) {
         return null;
     }
