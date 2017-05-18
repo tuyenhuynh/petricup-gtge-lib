@@ -1,34 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package petricup.lib;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author tuyenhuynh
+ */
 public class PlayField {
-    com.golden.gamedev.object.PlayField m_playField;
+    ImageBackground m_bg;
+    List<SpriteGroup> list_spriteGroup = new ArrayList<>();
+    List<BasicCollisionGroup> list_collisionGroup = new ArrayList<>();
     
     public PlayField(){
-        m_playField = new com.golden.gamedev.object.PlayField();
+        
     }
     
     public void setBackground(ImageBackground bg) {
-        m_playField.setBackground(bg.m_imageBackground);
+        m_bg = bg;
     }
     
     public void addGroup(SpriteGroup spriteGroup){
-        m_playField.addGroup(spriteGroup.m_spriteGroup);
+        list_spriteGroup.add(spriteGroup);
     }
     
-    public void addCollisionGroup(SpriteGroup sg1, SpriteGroup sg2, BasicCollisionGroup cm){
-        m_playField.addCollisionGroup(sg1.m_spriteGroup, sg2.m_spriteGroup, cm);
-        cm.setCollisionGroup(sg1, sg2);
+    public void addCollisionGroup(SpriteGroup sg1, SpriteGroup sg2, BasicCollisionGroup cg){
+        cg.setCollisionGroup(sg1, sg2);
+        list_collisionGroup.add(cg);
     }
     
     public void update(long e){
-        m_playField.update(e);
+        list_spriteGroup.stream().forEach((s) -> {
+            s.update(e);
+        });
+        list_collisionGroup.stream().forEach((cg) -> {
+            cg.checkCollision();
+        });
     }
     
     public void render(Graphics2D g2d){
-        m_playField.render(g2d.get());
+        m_bg.render(g2d);
+        list_spriteGroup.stream().forEach((s) -> {
+            s.render(g2d);
+        });
     }
     
     public void render(java.awt.Graphics2D g2d){
-        m_playField.render(g2d);
-    }
+    }    
 }

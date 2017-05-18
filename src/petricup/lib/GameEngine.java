@@ -5,14 +5,27 @@
  */
 package petricup.lib;
 
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 /**
- *
- * @author tuyenhuynh
+ * Главный класс игры
  */
-public class GameEngine extends com.golden.gamedev.GameEngine{
+public class GameEngine {
     
-    @Override
-    public com.golden.gamedev.GameObject getGame(int gameId) {
+    Game m_game;
+    public int nextGameID;
+    
+    public GameEngine(){
+        m_game = new Game();
+        m_game.m_gameEngine = this;
+    }
+
+    public GameObject getGame(int GameID) {
         return null;
     }
     
