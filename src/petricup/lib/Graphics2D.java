@@ -19,7 +19,19 @@ public class Graphics2D {
     
     public java.awt.Graphics2D get() {
         return m_g;
-    } 
+    }
+    
+    public void setFont(java.awt.Font font){
+        m_g.setFont(font);
+    }
+    
+    public void setColor(java.awt.Color color){
+        m_g.setColor(color);
+    }
+    
+    public void drawString(String s, int x, int y){
+        m_g.drawString(s, x, y);
+    }
       
     java.awt.Graphics2D m_g;
 }
