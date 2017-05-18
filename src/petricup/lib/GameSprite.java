@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package petricup.lib;
 
 import java.awt.Color;
@@ -10,10 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author tuyenhuynh
- */
 public abstract class GameSprite{
     com.golden.gamedev.object.Sprite m_sprite = new com.golden.gamedev.object.Sprite();
     /**

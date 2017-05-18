@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package petricup.lib;
 
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author tuyenhuynh
+ * Фон для игры
  */
 public class ImageBackground{
     com.golden.gamedev.object.background.ImageBackground m_imageBackground;
@@ -25,7 +19,14 @@ public class ImageBackground{
     public void update(long e) {
         m_imageBackground.update(e);
     }
-    
+
+    /**
+     * Устанавливает обрезку фона
+     * @param i
+     * @param i1
+     * @param i2
+     * @param i3 
+     */    
     public void setClip(int i, int i1, int i2, int i3){
         m_imageBackground.setClip(i, i1, i2, i3);
     }
@@ -42,6 +43,11 @@ public class ImageBackground{
         return m_imageBackground.getY();
     }
 
-    public void setTotalClip(int TOTAL_WIDTH, int TOTAL_HEIGHT) {
+    /**
+     * Устанавливает глобальные пределы смещения камеры
+     * @param totalWidth
+     * @param totalHeight 
+     */
+    public void setTotalClip(int totalWidth, int totalHeight) {
     }
 }
