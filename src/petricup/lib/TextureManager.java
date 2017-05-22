@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Менеджер текстур
@@ -26,12 +28,18 @@ public class TextureManager {
         BufferedImage m_image;
     }
     
+    static Map<String, Texture> cachedTexture = new HashMap<>();
     /**
      * Преборазует изображение в текстуру
      * @param img иходное изображениек
      * @return текстура
      */
     public static Texture imageToTexture(BufferedImage img) {
+        String str = img.toString();
+        if(cachedTexture.containsKey(str)) {
+            return cachedTexture.get(str);
+        }
+
         Pixmap px = new Pixmap(img.getWidth(), img.getHeight(), Pixmap.Format.RGBA8888);
         Pixmap.setBlending(Pixmap.Blending.None);
         px.setColor(Color.CYAN);
@@ -46,9 +54,11 @@ public class TextureManager {
                 px.drawPixel(i, j);
             }
         }
-        return new Texture(px);
+        Texture texture = new Texture(px);
+        cachedTexture.put(str, texture);
+        return texture;
     }
-    
+
     /**
      * Получает текстуру для изображения, стараясь по возможности кэшировать её
      * @param img изображение
