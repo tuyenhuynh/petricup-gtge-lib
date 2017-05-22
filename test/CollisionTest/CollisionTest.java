@@ -16,7 +16,7 @@ public class CollisionTest {
         {
             Math.CollisionPointPair pair = Math.
                 getCollisionPointsBetweenLineAndEllipse(0, 1, 0, 0, 0, 1, 1);
-            assertEquals(pair.x1, -1.0, 1E-3);
+            assertEquals(pair.x1, -2.0, 1E-3);
             assertEquals(pair.y1, 0.0, 1E-3);
             assertEquals(pair.x2, 1.0, 1E-3);
             assertEquals(pair.y2, 0.0, 1E-3);
